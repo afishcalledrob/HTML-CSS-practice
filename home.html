@@ -11,6 +11,18 @@
       <button type="button" id="click" onclick="clicked(this)">Click Me!</button>
       <button type="button" id="hover" onmouseout="unhover(this)" onmouseover="hover(this)">Cursor over me</button>
     </div>
+   
+
+    
+    <div id="list">
+      <h4>These are some of my favourite things:</h4>
+      <p>Food</p>
+      <p>Sleep</p>
+      <p>The countryside</p>
+      <p>Quantum computers</p>
+      <p>Cheese</p>
+      <p id="blue">The colour blue (click me)</p>
+    </div>
     
     <script type="text/javascript">
         clicked = function(id) {
@@ -26,8 +38,27 @@
       clicked2 = function() {
           alert("Button clicked")
         }
+      
+       firstEvent = function() {
+          alert("This should appear first!")
+        }
+      
         var clickableButton = document.getElementById("click")
-        clickableButton.addEventListener("click", clicked2)
+        clickableButton.addEventListener("click", clicked2, false)
+      
+      var buttons = document.getElementById("buttons")
+        buttons.addEventListener("click", firstEvent, true)
+      
+       togglePColour = function() {
+          var allThePs = document.getElementById("list").getElementsByTagName("p")
+          var newColor = allThePs[0].style.color === "blue" ? "black" : "blue"
+          for (i = 0; i < allThePs.length; i++) {
+            allThePs[i].style.color = newColor;
+          }
+        }
+      
+      var blueButton = document.getElementById("blue")
+        blueButton.addEventListener("click", togglePColour)
     </script>
   </body>
 </html>
