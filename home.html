@@ -8,7 +8,26 @@
   <body>
     <h1 id="Title">Small Fish</h1>
     <div id="buttons">
-      <button type="button" id="click" onclick="this.innerHTML = 'Clicked!'">Click Me!</button>
+      <button type="button" id="click" onclick="clicked(this)">Click Me!</button>
+      <button type="button" id="hover" onmouseout="unhover(this)" onmouseover="hover(this)">Cursor over me</button>
     </div>
+    
+    <script type="text/javascript">
+        clicked = function(id) {
+          id.innerHTML = 'Clicked!'
+        }
+        unhover = function(id) {
+          id.innerHTML = 'Ok, now try again'
+        }
+        hover = function(id) {
+          id.innerHTML = 'Get Off'
+        }
+      
+      clicked2 = function() {
+          alert("Button clicked")
+        }
+        var clickableButton = document.getElementById("click")
+        clickableButton.addEventListener("click", clicked2)
+    </script>
   </body>
 </html>
